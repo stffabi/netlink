@@ -298,6 +298,7 @@ type BpfFilter struct {
 	DirectAction bool
 	Id           int
 	Tag          string
+	Ops          []SockFilter
 }
 
 func (filter *BpfFilter) Type() string {
@@ -321,4 +322,11 @@ func (filter *GenericFilter) Attrs() *FilterAttrs {
 
 func (filter *GenericFilter) Type() string {
 	return filter.FilterType
+}
+
+type SockFilter struct {
+	Code uint16
+	Jt   uint8
+	Jf   uint8
+	K    uint32
 }
